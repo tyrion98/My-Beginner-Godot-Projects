@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Text/MainScreen.tres" type="DynamicFont" id=1]
+[ext_resource path="res://TIles/2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Control.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Music.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=7]
+
+[sub_resource type="OccluderPolygon2D" id=1]
+polygon = PoolVector2Array( 496.554, 188.113, 539.391, 188.113, 539.391, 331.744, 499.073, 329.224, 494.034, 288.907 )
+
+[sub_resource type="OccluderPolygon2D" id=2]
+polygon = PoolVector2Array( 882.375, 382.389, 1022.53, 381.055, 1021.2, 487.842, 1010.52, 486.507, 1009.19, 523.882, 886.38, 526.552, 887.715, 483.837, 879.706, 462.48 )
+
+[node name="World" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 600, 352.251 )
+current = true
+zoom = Vector2( 1.5, 1.5 )
+script = ExtResource( 7 )
+
+[node name="YSort" type="YSort" parent="."]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="dawg" parent="YSort" instance=ExtResource( 2 )]
+
+[node name="Player" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 417.795, 352.251 )
+collision_layer = 2
+
+[node name="ShadowsLights" type="Node2D" parent="YSort"]
+
+[node name="Shadows" type="LightOccluder2D" parent="YSort/ShadowsLights"]
+visible = false
+occluder = SubResource( 1 )
+
+[node name="Shadows2" type="LightOccluder2D" parent="YSort/ShadowsLights"]
+visible = false
+position = Vector2( 430.893, -50.3968 )
+occluder = SubResource( 2 )
+
+[node name="Enemy" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 783.796, 288.616 )
+
+[node name="Paused" type="CanvasLayer" parent="."]
+
+[node name="PauseScreen" type="Control" parent="Paused"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Paused/PauseScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.52549 )
+
+[node name="Button" type="Button" parent="Paused/PauseScreen"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -83.5
+margin_top = -10.0
+margin_right = 83.5
+margin_bottom = 10.0
+custom_fonts/font = ExtResource( 1 )
+text = "RETURN TO MAIN MENU"
+
+[node name="Music" parent="." instance=ExtResource( 5 )]
+[connection signal="pressed" from="Paused/PauseScreen/Button" to="Paused/PauseScreen" method="_on_Button_pressed"]

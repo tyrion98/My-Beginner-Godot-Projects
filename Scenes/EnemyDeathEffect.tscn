@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Effects/EnemyDeathEffect.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://Scripts/EnemyDeathEffect.gd" type="Script" id=2]
+
+[node name="EnemyDeathEffect" type="AnimatedSprite"]
+frames = ExtResource( 1 )
+animation = "Death"
+script = ExtResource( 2 )

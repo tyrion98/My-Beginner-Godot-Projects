@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Ontiva.com_♩♫_Scary_Horror_Music_♪♬_-_Haunted_Copyright_and_Royalty_Free.wav-1e00114f9938341b7e0e3f4c3555cfe8.sample"
+
+[deps]
+
+source_file="res://Ontiva.com_♩♫_Scary_Horror_Music_♪♬_-_Haunted_Copyright_and_Royalty_Free.wav"
+dest_files=[ "res://.import/Ontiva.com_♩♫_Scary_Horror_Music_♪♬_-_Haunted_Copyright_and_Royalty_Free.wav-1e00114f9938341b7e0e3f4c3555cfe8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
