@@ -1,0 +1,110 @@
+[gd_scene load_steps=41 format=2]
+
+[ext_resource path="res://Walk/RCG_Waver_walk0008_anio.png" type="Texture" id=1]
+[ext_resource path="res://Idle/RCG_Waver_idle0002_anio.png" type="Texture" id=2]
+[ext_resource path="res://Idle/RCG_Waver_idle0003_anio.png" type="Texture" id=3]
+[ext_resource path="res://Idle/RCG_Waver_idle0004_anio.png" type="Texture" id=4]
+[ext_resource path="res://Idle/RCG_Waver_idle0008_anio.png" type="Texture" id=5]
+[ext_resource path="res://Idle/RCG_Waver_idle0006_anio.png" type="Texture" id=6]
+[ext_resource path="res://Slash/RCG_Waver_slash0001_anio.png" type="Texture" id=7]
+[ext_resource path="res://Slash/RCG_Waver_slash0002_anio.png" type="Texture" id=8]
+[ext_resource path="res://Slash/RCG_Waver_slash0004_anio.png" type="Texture" id=9]
+[ext_resource path="res://Idle/RCG_Waver_idle0001_anio.png" type="Texture" id=10]
+[ext_resource path="res://Walk/RCG_Waver_walk0001_anio.png" type="Texture" id=11]
+[ext_resource path="res://Idle/RCG_Waver_idle0005_anio.png" type="Texture" id=12]
+[ext_resource path="res://Slash/RCG_Waver_slash0003_anio.png" type="Texture" id=13]
+[ext_resource path="res://Idle/RCG_Waver_idle0007_anio.png" type="Texture" id=14]
+[ext_resource path="res://Slash/RCG_Waver_slash0008_anio.png" type="Texture" id=15]
+[ext_resource path="res://Walk/RCG_Waver_walk0009_anio.png" type="Texture" id=16]
+[ext_resource path="res://Walk/RCG_Waver_walk0007_anio.png" type="Texture" id=17]
+[ext_resource path="res://Walk/RCG_Waver_walk0004_anio.png" type="Texture" id=18]
+[ext_resource path="res://Walk/RCG_Waver_walk0002_anio.png" type="Texture" id=19]
+[ext_resource path="res://Slash/RCG_Waver_slash0005_anio.png" type="Texture" id=20]
+[ext_resource path="res://Walk/RCG_Waver_walk0003_anio.png" type="Texture" id=21]
+[ext_resource path="res://Walk/RCG_Waver_walk0005_anio.png" type="Texture" id=22]
+[ext_resource path="res://Walk/RCG_Waver_walk0012_anio.png" type="Texture" id=23]
+[ext_resource path="res://Slash/RCG_Waver_slash0006_anio.png" type="Texture" id=24]
+[ext_resource path="res://Walk/RCG_Waver_walk0011_anio.png" type="Texture" id=25]
+[ext_resource path="res://Walk/RCG_Waver_walk0006_anio.png" type="Texture" id=26]
+[ext_resource path="res://Slash/RCG_Waver_slash0010_anio.png" type="Texture" id=27]
+[ext_resource path="res://Slash/RCG_Waver_slash0007_anio.png" type="Texture" id=28]
+[ext_resource path="res://Slash/RCG_Waver_slash0009_anio.png" type="Texture" id=29]
+[ext_resource path="res://Walk/RCG_Waver_walk0010_anio.png" type="Texture" id=30]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=31]
+[ext_resource path="res://ss1.png" type="Texture" id=32]
+[ext_resource path="res://Jump/RCG_Waver_frog0005_anio.png" type="Texture" id=46]
+[ext_resource path="res://Jump/RCG_Waver_frog0004_anio.png" type="Texture" id=48]
+[ext_resource path="res://Jump/RCG_Waver_frog0006_anio.png" type="Texture" id=49]
+[ext_resource path="res://Jump/RCG_Waver_frog0001_anio.png" type="Texture" id=53]
+[ext_resource path="res://Jump/RCG_Waver_frog0002_anio.png" type="Texture" id=54]
+
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 18 ), ExtResource( 22 ), ExtResource( 26 ), ExtResource( 17 ), ExtResource( 1 ), ExtResource( 16 ), ExtResource( 30 ), ExtResource( 25 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 54 ), ExtResource( 53 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 12 ), ExtResource( 6 ), ExtResource( 14 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 13 ), ExtResource( 9 ), ExtResource( 20 ), ExtResource( 24 ), ExtResource( 28 ), ExtResource( 15 ), ExtResource( 29 ), ExtResource( 27 ) ],
+"loop": true,
+"name": "Slash",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 48 ), ExtResource( 46 ), ExtResource( 49 ) ],
+"loop": true,
+"name": "Fall",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 16.0
+height = 32.0
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 8, 32 )
+
+[node name="Player" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 17
+script = ExtResource( 31 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "Fall"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.944946, -1.70039 )
+shape = SubResource( 2 )
+
+[node name="AttackArea" type="Area2D" parent="." groups=[
+"Sword",
+]]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2( 32, 0 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.1, 0.1 )
+motion_mirroring = Vector2( 800, 600 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 32 )
+centered = false
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
